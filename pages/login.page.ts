@@ -1,0 +1,41 @@
+import { Locator, Page, expect } from '@playwright/test';
+
+export class LoginPage {
+    readonly page: Page;
+    readonly userNameField: Locator;
+    readonly passwordField: Locator;
+    readonly loginButton: Locator;
+    readonly errorMessage: Locator
+
+
+constructor(page: Page) {
+    this.page = page;
+    this.userNameField = page.locator('#user-name');
+    this.passwordField = page.locator('#password');
+    this.loginButton = page.locator('#login-button');
+    this.errorMessage = page.locator('h3[data-test="error"]');
+    }
+
+
+async openURL () {
+    await this.page.goto('https://www.saucedemo.com/');
+    await expect(this.page).toHaveTitle('Swag Labs')
+    }
+
+
+async login (username: string, password:string) {
+    await this.userNameField.fill(username);
+    await this.passwordField.fill(password);
+    await this.loginButton.click();
+    
+
+}   
+
+async verifyLogin() {
+    await expect(this.page).toHaveURL('https://www.saucedemo.com/inventory.html')
+}
+
+async verifyLoginError() {
+  await expect(this.errorMessage).toHaveText('Epic sadface: Sorry, this user has been locked out.');
+}
+}
