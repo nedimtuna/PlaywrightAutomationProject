@@ -38,9 +38,9 @@ When writing Playwright E2E tests:
    - Name test files following the pattern `*.spec.ts` or `*.test.ts`.
 
 2. **Importing `test` and `expect`**
-    Make sure to import the above from the file `./setup` and not from Playwright.
+    Make sure to import the above from the  Playwright.
     This file contains a fixture to close the browser gracefully and avoid issues.
-    `import { test, expect } from './setup'`
+    `import { test, expect } from './@playwright'`
 
 2. **Test Cases:**
    - Each test case should represent a user interaction scenario with our application.
