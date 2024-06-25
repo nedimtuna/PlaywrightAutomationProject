@@ -1,4 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
+import { testData } from '../testData/testData';
 
 export class LoginPage {
     readonly page: Page;
@@ -18,7 +19,7 @@ constructor(page: Page) {
 
 
 async openURL () {
-    await this.page.goto('https://www.saucedemo.com/');
+    await this.page.goto(testData.url);
     await expect(this.page).toHaveTitle('Swag Labs')
     }
 

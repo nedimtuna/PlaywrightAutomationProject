@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import { LoginPage } from '../pages/login.page';
 import { describe } from 'node:test';
 import { InventoryPage } from '../pages/inventory.page';
+import { testData } from '../testData/testData';
 
 test.describe('Inventory suite', () => {
 
@@ -21,7 +22,7 @@ test.describe('Inventory suite', () => {
         invenotryPage = new InventoryPage(page);
 
         // login with standard user
-        await loginPage.login('standard_user', 'secret_sauce')
+        await loginPage.login(testData.username,testData.password)
         await loginPage.verifyLogin();
         //add item to the cart and go to the car page
         await invenotryPage.addItem();
