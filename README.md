@@ -22,10 +22,9 @@ To run the end-to-end tests:
 
 ## Test Configuration
 
-- Tests are located in `.tests.
+- Tests are located in ./tests.
 - Configured for multiple environments including Chromium, Firefox, WebKit, and mobile browsers.
 
-Certainly! Here's an expanded section on writing tests:
 
 ---
 
@@ -34,7 +33,7 @@ Certainly! Here's an expanded section on writing tests:
 When writing Playwright E2E tests:
 
 1. **Test Structure:**
-   - Organize your tests within the `.tests` directory.
+   - Organize your tests within the `./tests` directory.
    - Name test files following the pattern `*.spec.ts` or `*.test.ts`.
 
 2. **Importing `test` and `expect`**
