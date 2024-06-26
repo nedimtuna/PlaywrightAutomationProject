@@ -19,7 +19,7 @@ test.describe('Login suite', () => {
         //login with standard user
         await loginPage.login(testData.username, testData.password);
         //verify login successful login
-        await loginPage.verifyLogin();
+        await expect(loginPage.page).toHaveURL('https://www.saucedemo.com/inventory.html');
 
     })
 
@@ -27,6 +27,6 @@ test.describe('Login suite', () => {
         //login with locked user
         await loginPage.login(testData.lockedUser, testData.password);
         //verify locked user login error
-        await loginPage.verifyLoginError();
+        await expect(loginPage.errorMessage).toHaveText('Epic sadface: Sorry, this user has been locked out.');
     })
 })

@@ -23,14 +23,15 @@ test.describe('Inventory suite', () => {
 
         // login with standard user
         await loginPage.login(testData.username,testData.password)
-        await loginPage.verifyLogin();
+        await expect(loginPage.page).toHaveURL('https://www.saucedemo.com/inventory.html');
         //add item to the cart and go to the car page
         await invenotryPage.addItem();
         //verify that selected item is present there
-        await invenotryPage.verifyAddItem();
+        await expect (invenotryPage.cartItem).toContainText('Sauce Labs Bike Light');
         //proceed to checkout feature
-        await invenotryPage.proccedToCheckout();
-        await invenotryPage.verifyCheckout();
+        await invenotryPage.checkoutButton.click();
+        //verify that user is at checkout page
+        await expect(invenotryPage.page).toHaveURL('https://www.saucedemo.com/checkout-step-one.html');
 
     
 
