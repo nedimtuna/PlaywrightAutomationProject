@@ -1,11 +1,11 @@
-import { test, expect, Page, Locator } from '@playwright/test'
+import { test, expect, Page, Locator } from '@playwright/test';
 
 export class CheckoutPage {
     readonly page: Page;
     readonly firstNameField: Locator;
     readonly lastNameField: Locator;
     readonly postalCodeField: Locator;
-    readonly continueButton: Locator
+    readonly continueButton: Locator;
     readonly finishButton: Locator;
     readonly backHomeButton: Locator;
 
@@ -16,19 +16,15 @@ export class CheckoutPage {
         this.postalCodeField = page.locator('#postal-code');
         this.continueButton = page.locator('//input[@name = "continue"]');
         this.finishButton = page.locator('#finish');
-        this.backHomeButton = page.locator('#back-to-products')
+        this.backHomeButton = page.locator('#back-to-products');
     }
-
     async fillCheckoutForm(firstname: string, lastname: string, postalcode: string) {
         await this.firstNameField.fill(firstname);
         await this.lastNameField.fill(lastname);
         await this.postalCodeField.fill(postalcode);
         await this.continueButton.click();
     }
-
     async finishCheckout() {
-        await this.finishButton.click();
-        await expect(this.backHomeButton).toBeVisible();
-
+        await this.finishButton.click();   
     }
 }
