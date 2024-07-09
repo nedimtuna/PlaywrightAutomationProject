@@ -1,17 +1,20 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from '../pages/login.page';
 import { InventoryPage } from '../pages/inventory.page';
-import { testData } from '../testData/testData';
+import { testData } from '../test-data/test-data';
+import { LoginHelper } from '../helpers/login.helper';
 
 test.describe('Inventory suite', () => {
     let loginPage: LoginPage;
     let inventoryPage: InventoryPage;
+    let loginHelper: LoginHelper;
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
+        loginHelper = new LoginHelper(page);
         //navigate to the page
         await loginPage.openURL();
-        await expect(loginPage.page).toHaveTitle('Swag Labs');
+        await loginHelper.validatePageDisplayedProperly();
     })
     test('add product in the cart', async ({ page }) => {
         inventoryPage = new InventoryPage(page);

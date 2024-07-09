@@ -1,15 +1,18 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login.page';
-import { testData } from '../testData/testData';
+import { testData } from '../test-data/test-data';
+import { LoginHelper } from '../helpers/login.helper';
 
 test.describe('Login suite', () => {
     let loginPage: LoginPage;
+    let loginHelper: LoginHelper;
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
+        loginHelper = new LoginHelper(page);
         /*navigate to the page*/
         await loginPage.openURL();
-        await expect(loginPage.page).toHaveTitle('Swag Labs');
+        await loginHelper.validatePageDisplayedProperly();
     })
     test('login with standard user', async () => {
         /*login with standard user*/
