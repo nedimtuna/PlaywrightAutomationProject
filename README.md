@@ -1,32 +1,33 @@
 # PlaywrightAutomationProject
 # E2E Testing with Playwright
 
-This directory contains end-to-end (E2E) tests for our application using Playwright.
+This project demonstrates an automated testing framework using Playwright with the Page Object Model (POM) design pattern in TypeScript. 
+
+##Project Structure
+-helpers # Utility functions and helpers
+-pages # Page Object Models (POMs) for different web pages
+-test-data # Test data files
+-tests # Test scripts
+-.gitignore # Git ignore file
+-README.md # Project documentation
+-package-lock.json # Auto-generated lock file for npm
+-package.json # Project metadata and dependencies
+-playwright.config.ts# Playwright configuration file
 
 ## Prerequisites
-
-- Make sure you have all necessary dependencies installed: `pnpm install`.
-
-
+- Node.js
+- npm
+  
 ## Running E2E Tests
 
-To run the end-to-end tests:
+1. To execute tests use npx playwright test
 
-1. **Execute Playwright Tests:**
-   - Run `pnpm e2e` to start the test suite.
-   - Playwright will automatically handle starting and stopping the development server.
-
-2. **Interactive Mode:**
-   - For a more interactive experience, run `pnpm e2e:ui`.
-
+2. To execute specific test use npx playwright test tests/your-test-file.spec.ts
 
 ## Test Configuration
 
 - Tests are located in ./tests.
 - Configured for multiple environments including Chromium, Firefox, WebKit, and mobile browsers.
-
-
----
 
 ## Writing Tests
 
@@ -56,6 +57,9 @@ When writing Playwright E2E tests:
    - Keep tests independent and avoid dependencies between tests.
    - Use data-test attributes or accessible roles for more stable selectors.
    - Regularly review and update tests to reflect changes in the application.
+   - Keep assertions in the test scripts, never in the pages file.
+   - Choose naming convention and follow it through the entire project
+     
 
 6. **Documentation:**
    - Document any specific patterns or practices used in your tests to maintain consistency across the team.
